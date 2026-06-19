@@ -1,0 +1,24 @@
+# Secrets — NEVER COMMIT
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+service-account*.json
+# macOS clutter
+.DS_Store
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# uv
+uv.lock.bak
+# build artifacts
+dist/
+build/
+*.egg-info/
