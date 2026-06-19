@@ -6,13 +6,11 @@ requires-python = ">=3.12"
 dependencies = ["lib>=0.1.0"]
 
 [tool.uv.sources]
-# Without this block, `uv sync` would try to pull `lib` from PyPI and fail
-# because lib only exists inside this workspace. The `workspace = true`
-# marker tells uv: "resolve this dependency to the workspace member of
-# the same name." Outside the workspace, the registry name still applies
-# — meaning a downstream consumer who installs `app` from PyPI keeps the
-# stock dependency declaration and pulls `lib` from PyPI normally.
-lib = { workspace = true }
+# Lesson 3 moved the `lib` source override to the workspace root, since
+# the path is most naturally resolved relative to the workspace head.
+# App's pyproject.toml stays clean — only the registry-shaped name on
+# `project.dependencies`. Downstream consumers who install `app` from a
+# real index get `lib` from a real index.
 
 [build-system]
 requires = ["hatchling"]

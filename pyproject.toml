@@ -3,14 +3,20 @@ name = "uv-workspace-source-overrides-root"
 version = "0.0.0"
 description = "Workspace root for the uv source-override walkthrough."
 requires-python = ">=3.12"
-dependencies = ["app", "lib"]
+dependencies = ["app"]
 
+# Lesson 3 drops `packages/lib` from members. The in-tree directory still
+# exists (for diffs against the fork) but uv no longer treats it as a
+# workspace member. The `lib` name now resolves through the path source
+# below to the sibling checkout.
 [tool.uv.workspace]
-members = ["packages/app", "packages/lib"]
+members = ["packages/app"]
 
 [tool.uv.sources]
 app = { workspace = true }
-lib = { workspace = true }
+# Path source: resolve `lib` to a sibling checkout outside the workspace.
+# The path is RELATIVE to this pyproject.toml.
+lib = { path = "lib-fork", editable = true }
 
 [tool.uv]
 dev-dependencies = ["pytest>=8.0"]
