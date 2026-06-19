@@ -40,11 +40,11 @@ Step through the lessons chronologically. Each commit leaves the tree in a runna
 
 | Step | Commit | Description |
 |---|---|---|
-| 0 | init | Scaffold the README + `.gitignore` (no Python code yet). |
-| 1 | workspace skeleton | Define `[tool.uv.workspace]` + create `app` and `lib` packages with trivial code + tests. |
-| 2 | workspace-member source | Add `lib` as a dependency of `app` and route it through `[tool.uv.sources]` with `{workspace = true}`. |
-| 3 | path source for sibling checkout | Override the same `lib` name with a `path = "../lib-fork"` source — what changes in the lockfile. |
-| 4 | git source with rev pin | Replace the path source with `{ git = "...", rev = "..." }` — registry fallback semantics + lock entries. |
+| 0 | [`fff8666`](https://github.com/vytharion/uv-workspace-source-overrides/commit/fff8666) | Scaffold the README + `.gitignore` (no Python code yet). |
+| 1 | [`626a7ec`](https://github.com/vytharion/uv-workspace-source-overrides/commit/626a7ec) | Define `[tool.uv.workspace]` + create `app` and `lib` packages with tests. |
+| 2 | [`6dced3e`](https://github.com/vytharion/uv-workspace-source-overrides/commit/6dced3e) | Add `lib` as a dependency of `app` and route it through `[tool.uv.sources]` with `{workspace = true}`. |
+| 3 | [`ad6530f`](https://github.com/vytharion/uv-workspace-source-overrides/commit/ad6530f) | Override the same `lib` name with a `path = "lib-fork"` source — what changes in the lockfile. |
+| 4 | [`b5883f4`](https://github.com/vytharion/uv-workspace-source-overrides/commit/b5883f4) | Replace the path source with `{ git = "...", rev = "..." }` — reproducible git pin + registry fallback semantics. |
 
 To replay a specific step:
 
