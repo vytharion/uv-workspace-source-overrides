@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "lib", editable = "lib-fork" }]
+requires-dist = [{ name = "lib", git = "https://github.com/vytharion/uv-workspace-source-overrides?subdirectory=packages%2Flib&rev=626a7ec" }]
 
 [[package]]
 name = "colorama"
@@ -39,8 +39,8 @@ wheels = [
 
 [[package]]
 name = "lib"
-version = "0.9.0"
-source = { editable = "lib-fork" }
+version = "0.1.0"
+source = { git = "https://github.com/vytharion/uv-workspace-source-overrides?subdirectory=packages%2Flib&rev=626a7ec#626a7eccdb5f8cd554a791fa0e0bc23867d4c16f" }
 
 [[package]]
 name = "packaging"

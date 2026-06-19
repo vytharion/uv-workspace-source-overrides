@@ -14,9 +14,16 @@ members = ["packages/app"]
 
 [tool.uv.sources]
 app = { workspace = true }
-# Path source: resolve `lib` to a sibling checkout outside the workspace.
-# The path is RELATIVE to this pyproject.toml.
-lib = { path = "lib-fork", editable = true }
+# Git source pinned to a specific revision + subdirectory. uv clones the
+# repo, checks out `rev`, then installs the package whose `pyproject.toml`
+# sits at `subdirectory`. The pin is reproducible — bumping `rev` is an
+# intentional act recorded in the lockfile.
+#
+# The registry-shaped name on `app.dependencies` (`lib>=0.1.0`) still
+# applies. If a downstream consumer installs `app` from a real index, they
+# see the registry name, not this git URL. Source overrides are
+# workspace-local; they do not propagate to dependents.
+lib = { git = "https://github.com/vytharion/uv-workspace-source-overrides", rev = "626a7ec", subdirectory = "packages/lib" }
 
 [tool.uv]
 dev-dependencies = ["pytest>=8.0"]
