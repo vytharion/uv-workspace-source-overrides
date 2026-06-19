@@ -1,9 +1,18 @@
 [project]
 name = "app"
-version = "0.1.0"
-description = "Consumer package — will depend on lib starting in Lesson 2."
+version = "0.2.0"
+description = "Consumer package — depends on lib via workspace source."
 requires-python = ">=3.12"
-dependencies = []
+dependencies = ["lib>=0.1.0"]
+
+[tool.uv.sources]
+# Without this block, `uv sync` would try to pull `lib` from PyPI and fail
+# because lib only exists inside this workspace. The `workspace = true`
+# marker tells uv: "resolve this dependency to the workspace member of
+# the same name." Outside the workspace, the registry name still applies
+# — meaning a downstream consumer who installs `app` from PyPI keeps the
+# stock dependency declaration and pulls `lib` from PyPI normally.
+lib = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]
